@@ -30,13 +30,6 @@
             background: rgba(3, 13, 29, 0.8);
             border: 1px solid rgba(30, 80, 140, 0.5);
         }
-
-        .hero-banner {
-            background: radial-gradient(circle at 75% 30%, rgba(14, 115, 220, 0.3) 0%, rgba(2, 9, 22, 0.95) 60%),
-                        url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1600&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
-        }
     </style>
 </head>
 <body class="min-h-screen flex flex-col justify-between">
@@ -74,14 +67,16 @@
 
     <!-- Hero Section -->
     <section class="relative w-full py-16 md:py-24 border-b border-blue-900/20 overflow-hidden">
-        <!-- Background Ambient Glow -->
-        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-blue-600/20 via-cyan-900/10 to-transparent pointer-events-none"></div>
+        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-blue-600/30 via-cyan-900/10 to-transparent pointer-events-none"></div>
 
         <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
             <!-- Left Text Content -->
             <div class="lg:col-span-6">
-                <h2 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-4">
-                    ORNOB <span class="text-blue-400">AI Studio</span>
+                <div class="inline-block px-3 py-1 rounded-full bg-blue-500/10 border border-blue-400/30 text-cyan-400 text-xs font-semibold mb-4">
+                    ONE PLACE. MANY POSSIBILITIES.
+                </div>
+                <h2 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-4 text-white">
+                    ORNOB <span class="bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">AI Studio</span>
                 </h2>
                 <p class="text-2xl md:text-3xl font-bold text-slate-100 mb-4">
                     Turn Your Imagination Into Reality
@@ -106,8 +101,6 @@
                     </div>
                     <div class="text-center group cursor-pointer">
                         <div class="w-12 h-12 rounded-2xl bg-blue-950/60 border border-blue-800/40 flex items-center justify-center text-cyan-400 mx-auto mb-2 group-hover:bg-blue-600 group-hover:text-white transition">
-                            <i class="fa-solid fa-[#087df0] fa-clack"></i>
-                            <i class="fa-solid fa-[fa-film]"></i>
                             <i class="fa-solid fa-file-video"></i>
                         </div>
                         <span class="text-[11px] font-medium text-slate-300 block">Text to<br>Video</span>
@@ -127,10 +120,10 @@
 
             <!-- Right Whale Art Graphic -->
             <div class="lg:col-span-6 relative flex justify-center items-center">
-                <div class="relative w-full max-w-lg aspect-square rounded-3xl overflow-hidden shadow-2xl border border-cyan-500/20 group">
-                    <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1000&auto=format&fit=crop" alt="ORNOB Whale AI" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                <div class="relative w-full max-w-lg aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl border border-cyan-500/20 group">
+                    <img src="https://images.unsplash.com/photo-1559827291-72ee739d0d9a?q=80&w=1000&auto=format&fit=crop" alt="ORNOB Whale AI" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
                     <div class="absolute inset-0 bg-gradient-to-t from-[#020916] via-transparent to-transparent"></div>
-                    <div class="absolute bottom-6 right-6 text-right handwritten text-cyan-200 text-2xl opacity-80">
+                    <div class="absolute bottom-6 right-6 text-right handwritten text-cyan-200 text-2xl opacity-90 drop-shadow-md">
                         Even the biggest dreams<br>start with a single prompt...
                     </div>
                 </div>
@@ -211,10 +204,9 @@
 
         <!-- 4 Feature Cards Section -->
         <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-            <!-- Card 1 -->
             <div class="glass-card rounded-2xl overflow-hidden p-4 border border-blue-900/40 flex flex-col justify-between group">
                 <div class="h-40 rounded-xl overflow-hidden mb-4 relative">
-                    <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=500&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=500&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
                     <div class="absolute top-3 left-3 w-8 h-8 rounded-lg bg-blue-600/80 backdrop-blur-md flex items-center justify-center text-white text-xs">
                         <i class="fa-regular fa-image"></i>
                     </div>
@@ -228,7 +220,6 @@
                 </button>
             </div>
 
-            <!-- Card 2 -->
             <div class="glass-card rounded-2xl overflow-hidden p-4 border border-blue-900/40 flex flex-col justify-between group">
                 <div class="h-40 rounded-xl overflow-hidden mb-4 relative">
                     <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=500&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
@@ -245,7 +236,6 @@
                 </button>
             </div>
 
-            <!-- Card 3 -->
             <div class="glass-card rounded-2xl overflow-hidden p-4 border border-blue-900/40 flex flex-col justify-between group">
                 <div class="h-40 rounded-xl overflow-hidden mb-4 relative">
                     <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b675?q=80&w=500&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
@@ -262,7 +252,6 @@
                 </button>
             </div>
 
-            <!-- Card 4 -->
             <div class="glass-card rounded-2xl overflow-hidden p-4 border border-blue-900/40 flex flex-col justify-between group">
                 <div class="h-40 rounded-xl overflow-hidden mb-4 relative">
                     <img src="https://images.unsplash.com/photo-1563089145-599997674d42?q=80&w=500&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
@@ -296,7 +285,7 @@
 
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
                 <div class="aspect-square rounded-2xl overflow-hidden glass-card border border-blue-900/30 group cursor-pointer">
-                    <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=400&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=400&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
                 </div>
                 <div class="aspect-square rounded-2xl overflow-hidden glass-card border border-blue-900/30 group cursor-pointer">
                     <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=400&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
@@ -363,13 +352,13 @@
         }
         function tryWorkspace() {
             let p = document.getElementById('prompt').value.trim();
-                let status = document.getElementById('status');
-                if(p) {
-                    status.innerHTML = "✨ Generating creation for: <b>" + p + "</b>... (Demo Mode)";
-                } else {
-                    status.innerHTML = "⚠️ Please type a prompt first!";
-                }
+            let status = document.getElementById('status');
+            if(p) {
+                status.innerHTML = "✨ Generating creation for: <b>" + p + "</b>... (Demo Mode)";
+            } else {
+                status.innerHTML = "⚠️ Please type a prompt first!";
+            }
         }
     </script>
 </body>
-                </html>
+        </html>
