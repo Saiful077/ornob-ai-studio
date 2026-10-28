@@ -18,7 +18,7 @@
             theme: {
                 extend: {
                     colors: {
-                        brandDark: '#02101e', /* Deep dark blue from image */
+                        brandDark: '#02101e',
                         brandBlue: '#007BFF',
                         panelBg: '#0a1f33',
                     },
@@ -33,9 +33,8 @@
     <style>
         body { background-color: #02101e; color: white; }
         
-        /* Exact Background Image Style */
         .bg-hero {
-            background-image: url('https://images.unsplash.com/photo-1568430462989-44163eb1752f?q=80&w=2073&auto=format&fit=crop'); /* Ocean Whale */
+            background-image: url('https://images.unsplash.com/photo-1568430462989-44163eb1752f?q=80&w=2073&auto=format&fit=crop'); 
             background-size: cover;
             background-position: center top;
             position: relative;
@@ -48,7 +47,6 @@
             background: linear-gradient(90deg, #02101e 0%, rgba(2,16,30,0.8) 40%, transparent 100%);
         }
 
-        /* Glassmorphism for Main Panel */
         .glass-panel {
             background: rgba(10, 31, 51, 0.65);
             backdrop-filter: blur(20px);
@@ -57,13 +55,11 @@
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
         }
         
-        /* Exact Cursive Font styling */
         .cursive-text {
             font-family: 'Great Vibes', cursive;
             color: #60a5fa;
         }
 
-        /* Chat UI Styles */
         .chat-container { height: 400px; overflow-y: auto; }
         .chat-container::-webkit-scrollbar { width: 6px; }
         .chat-container::-webkit-scrollbar-thumb { background: #007BFF; border-radius: 10px; }
@@ -76,9 +72,11 @@
 
     <!-- Navbar -->
     <nav class="absolute top-0 w-full flex items-center justify-between px-6 md:px-12 py-4 z-50">
-        <div class="flex items-center gap-2">
-            <!-- Exact Logo Style with Blue Whale icon -->
-            <img src="https://cdn-icons-png.flaticon.com/512/3063/3063822.png" alt="Logo" class="w-10 h-10 object-contain filter drop-shadow-[0_0_8px_rgba(0,123,255,0.5)]" style="filter: invert(42%) sepia(93%) saturate(1352%) hue-rotate(190deg) brightness(119%) contrast(119%);">
+        <div class="flex items-center gap-3">
+            <!-- নীল তিমির SVG লোগো -->
+            <svg class="w-10 h-10 text-[#007BFF] filter drop-shadow-[0_0_8px_rgba(0,123,255,0.6)]" viewBox="0 0 256 256" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path d="M236,120a8,8,0,0,1-8,8H208v16a64,64,0,0,1-64,64H96a64,64,0,0,1-64-64,8,8,0,0,1,16,0,48,48,0,0,0,48,48h48a48,48,0,0,0,48-48V128H176a16,16,0,0,1-16-16V96a16,16,0,0,1,32,0v16h16V80a48,48,0,0,0-48-48H80A48,48,0,0,0,32,80v32a8,8,0,0,1-16,0V80A64,64,0,0,1,80,16h80a64,64,0,0,1,64,64v32A8,8,0,0,1,236,120ZM60,136a12,12,0,1,0,12-12A12,12,0,0,0,60,136Zm80,48a12,12,0,1,0,12-12A12,12,0,0,0,140,184Z"/>
+            </svg>
             <div class="leading-tight">
                 <span class="font-bold text-xl tracking-wide text-white">ORNOB</span><br>
                 <span class="text-xs text-gray-300">AI Studio</span>
@@ -97,7 +95,7 @@
                 <span class="text-sm text-gray-300">English</span>
                 <i class="fa-solid fa-chevron-down text-gray-500 text-xs ml-1"></i>
             </div>
-            <button class="bg-[#007BFF] hover:bg-blue-600 px-6 py-2 rounded-full font-medium transition text-white text-sm">Sign In</button>
+            <button class="bg-[#007BFF] hover:bg-blue-600 px-6 py-2 rounded-full font-medium transition text-white text-sm shadow-[0_0_15px_rgba(0,123,255,0.4)]">Sign In</button>
         </div>
     </nav>
 
@@ -129,13 +127,11 @@
                 </div>
             </div>
             
-            <!-- Dream Create Share -->
             <div class="cursive-text text-3xl md:text-4xl flex items-center gap-4">
                 Dream <span class="text-white/30 text-xl">•</span> Create <span class="text-white/30 text-xl">•</span> Share
             </div>
         </div>
         
-        <!-- Handwritten Right Text -->
         <div class="absolute right-10 top-1/3 text-gray-300 font-handwrite text-3xl md:text-4xl transform -rotate-6 hidden lg:block opacity-70">
             Even<br>the biggest dreams<br>start with a single<br>prompt...
         </div>
@@ -254,7 +250,7 @@
         </div>
     </div>
 
-    <!-- ORNOB Ai Chat Section (Added below features so design doesn't break) -->
+    <!-- ORNOB Ai Chat Section -->
     <div id="chat" class="max-w-6xl mx-auto px-4 mt-20">
         <div class="glass-panel rounded-3xl p-6 md:p-8">
             <div class="flex items-center gap-3 mb-6 border-b border-white/10 pb-4">
@@ -304,7 +300,10 @@
     <footer class="border-t border-white/10 py-6 px-6 md:px-12 bg-[#02101e]">
         <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
             <div class="flex items-center gap-2">
-                <img src="https://cdn-icons-png.flaticon.com/512/3063/3063822.png" alt="Logo" class="w-8 h-8 object-contain" style="filter: invert(42%) sepia(93%) saturate(1352%) hue-rotate(190deg) brightness(119%) contrast(119%);">
+                <!-- ফুটারের নীল তিমির SVG লোগো -->
+                <svg class="w-8 h-8 text-[#007BFF]" viewBox="0 0 256 256" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M236,120a8,8,0,0,1-8,8H208v16a64,64,0,0,1-64,64H96a64,64,0,0,1-64-64,8,8,0,0,1,16,0,48,48,0,0,0,48,48h48a48,48,0,0,0,48-48V128H176a16,16,0,0,1-16-16V96a16,16,0,0,1,32,0v16h16V80a48,48,0,0,0-48-48H80A48,48,0,0,0,32,80v32a8,8,0,0,1-16,0V80A64,64,0,0,1,80,16h80a64,64,0,0,1,64,64v32A8,8,0,0,1,236,120ZM60,136a12,12,0,1,0,12-12A12,12,0,0,0,60,136Zm80,48a12,12,0,1,0,12-12A12,12,0,0,0,140,184Z"/>
+                </svg>
                 <div class="leading-tight">
                     <span class="font-bold text-md tracking-wider text-white">ORNOB</span> <span class="text-[#007BFF]">AI Studio</span><br>
                     <span class="text-xs text-gray-500">Imagine • Create • Beyond</span>
@@ -448,4 +447,4 @@
         }
     </script>
 </body>
-                    </html>
+    </html>
