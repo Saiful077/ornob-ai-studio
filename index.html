@@ -10,6 +10,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Puter.js for Free AI Chat (Perplexity Search) -->
+    <script src="https://js.puter.com/v2/"></script>
     
     <script>
         tailwind.config = {
@@ -42,6 +44,13 @@
             background-size: cover;
             background-position: center;
         }
+        /* Chat UI Styles */
+        .chat-container { height: 400px; overflow-y: auto; }
+        .chat-container::-webkit-scrollbar { width: 6px; }
+        .chat-container::-webkit-scrollbar-thumb { background: #007BFF; border-radius: 10px; }
+        .message-user { background: #007BFF; color: white; border-radius: 12px 12px 0 12px; padding: 10px 15px; margin-bottom: 10px; margin-left: auto; max-width: 80%; width: fit-content; }
+        .message-ai { background: #1a2c42; color: #e2e8f0; border-radius: 12px 12px 12px 0; padding: 10px 15px; margin-bottom: 10px; margin-right: auto; max-width: 80%; width: fit-content; }
+        .message-ai a { color: #60a5fa; text-decoration: underline; }
     </style>
 </head>
 <body class="antialiased">
@@ -49,7 +58,6 @@
     <!-- Navbar -->
     <nav class="flex items-center justify-between px-8 py-4 text-sm font-medium border-b border-white/10 relative z-50">
         <div class="flex items-center gap-3">
-            <!-- এখানে আপনার লোগো.png ফাইলটি থাকবে -->
             <img src="logo.png" alt="Logo" class="w-10 h-10 rounded-full object-cover border border-white/20" onerror="this.src='https://cdn-icons-png.flaticon.com/512/8263/8263693.png'">
             <div class="leading-tight">
                 <span class="font-bold text-lg tracking-wider">ORNOB</span><br>
@@ -58,10 +66,9 @@
         </div>
         <div class="hidden md:flex gap-8 text-gray-300">
             <a href="#" class="text-white border-b-2 border-brandBlue pb-1">Home</a>
-            <a href="#" class="hover:text-white transition">Image Generator</a>
-            <a href="#" class="hover:text-white transition">Video Generator</a>
+            <a href="#generator" class="hover:text-white transition">Image Generator</a>
+            <a href="#chat" class="hover:text-white transition">ORNOB Ai</a>
             <a href="#" class="hover:text-white transition">Gallery</a>
-            <a href="#" class="hover:text-white transition">About</a>
         </div>
         <div class="flex items-center gap-4">
             <select class="bg-transparent border border-white/20 rounded-full px-4 py-1.5 outline-none">
@@ -85,15 +92,14 @@
             <div class="flex gap-6 mb-8">
                 <div class="flex flex-col items-center gap-2"><div class="p-3 border border-white/20 rounded-xl bg-white/5"><i class="fa-regular fa-image text-blue-400 text-xl"></i></div><span class="text-xs text-gray-300 text-center">AI Image<br>Generator</span></div>
                 <div class="flex flex-col items-center gap-2"><div class="p-3 border border-white/20 rounded-xl bg-white/5"><i class="fa-solid fa-video text-blue-400 text-xl"></i></div><span class="text-xs text-gray-300 text-center">AI Video<br>Generator</span></div>
-                <div class="flex flex-col items-center gap-2"><div class="p-3 border border-white/20 rounded-xl bg-white/5"><i class="fa-solid fa-font text-blue-400 text-xl"></i></div><span class="text-xs text-gray-300 text-center">Text to Video</span></div>
-                <div class="flex flex-col items-center gap-2"><div class="p-3 border border-white/20 rounded-xl bg-white/5"><i class="fa-solid fa-images text-blue-400 text-xl"></i></div><span class="text-xs text-gray-300 text-center">Image to Video</span></div>
+                <div class="flex flex-col items-center gap-2"><div class="p-3 border border-white/20 rounded-xl bg-white/5"><i class="fa-solid fa-comments text-blue-400 text-xl"></i></div><span class="text-xs text-gray-300 text-center">ORNOB Ai<br>Chat</span></div>
             </div>
             <p class="font-serif italic text-2xl text-gray-400">Dream • Create • Share</p>
         </div>
     </div>
 
     <!-- Main Glass Generator Panel -->
-    <div class="relative z-20 max-w-5xl mx-auto -mt-32 px-4">
+    <div id="generator" class="relative z-20 max-w-5xl mx-auto -mt-32 px-4">
         <div class="glass-panel rounded-3xl p-6 shadow-2xl">
             
             <!-- Tabs -->
@@ -133,26 +139,32 @@
         </div>
     </div>
 
-    <!-- Popular AI Assistants (New Section) -->
-    <div class="max-w-6xl mx-auto px-4 mt-16">
-        <h2 class="text-2xl font-bold mb-6 flex items-center gap-2"><i class="fa-solid fa-robot text-blue-400"></i> Popular AI Assistants</h2>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <a href="https://chatgpt.com" target="_blank" class="bg-[#0a1f33] border border-white/10 p-4 rounded-xl flex items-center gap-3 hover:border-blue-500 transition">
-                <i class="fa-solid fa-comment-dots text-green-400 text-2xl"></i>
-                <div><h3 class="font-bold">ChatGPT</h3><p class="text-xs text-gray-400">OpenAI</p></div>
-            </a>
-            <a href="https://gemini.google.com" target="_blank" class="bg-[#0a1f33] border border-white/10 p-4 rounded-xl flex items-center gap-3 hover:border-blue-500 transition">
-                <i class="fa-solid fa-sparkles text-blue-400 text-2xl"></i>
-                <div><h3 class="font-bold">Gemini</h3><p class="text-xs text-gray-400">Google</p></div>
-            </a>
-            <a href="https://chat.deepseek.com" target="_blank" class="bg-[#0a1f33] border border-white/10 p-4 rounded-xl flex items-center gap-3 hover:border-blue-500 transition">
-                <i class="fa-solid fa-brain text-purple-400 text-2xl"></i>
-                <div><h3 class="font-bold">DeepSeek</h3><p class="text-xs text-gray-400">Coding & Logic</p></div>
-            </a>
-            <a href="https://huggingface.co" target="_blank" class="bg-[#0a1f33] border border-white/10 p-4 rounded-xl flex items-center gap-3 hover:border-blue-500 transition">
-                <i class="fa-solid fa-face-smile text-yellow-400 text-2xl"></i>
-                <div><h3 class="font-bold">HuggingFace</h3><p class="text-xs text-gray-400">Open Models</p></div>
-            </a>
+    <!-- ORNOB Ai Chat Section (New) -->
+    <div id="chat" class="max-w-5xl mx-auto px-4 mt-16 mb-20">
+        <div class="glass-panel rounded-3xl p-6 shadow-2xl">
+            <div class="flex items-center gap-3 mb-6 border-b border-white/10 pb-4">
+                <div class="bg-blue-600 p-2 rounded-lg"><i class="fa-solid fa-robot text-white text-xl"></i></div>
+                <div>
+                    <h2 class="text-xl font-bold">ORNOB Ai</h2>
+                    <p class="text-xs text-green-400"><i class="fa-solid fa-circle text-[8px] mr-1"></i> Online • Powered by Perplexity Search</p>
+                </div>
+            </div>
+            
+            <!-- Chat Box -->
+            <div id="chatBox" class="chat-container bg-black/20 rounded-xl p-4 mb-4 flex flex-col">
+                <!-- Initial Message -->
+                <div class="message-ai">
+                    Hello! I am ORNOB Ai. I can search the internet to give you the latest information. How can I help you today?
+                </div>
+            </div>
+
+            <!-- Chat Input -->
+            <div class="flex gap-2">
+                <input type="text" id="chatInput" placeholder="Ask me anything... (e.g. What is the latest news in Bangladesh today?)" class="flex-1 bg-black/30 border border-white/10 rounded-xl p-4 text-white outline-none focus:border-blue-500 transition" onkeypress="handleEnter(event)">
+                <button onclick="sendMessage()" id="sendBtn" class="bg-blue-600 hover:bg-blue-500 px-6 rounded-xl font-bold transition flex items-center justify-center">
+                    <i class="fa-solid fa-paper-plane"></i>
+                </button>
+            </div>
         </div>
     </div>
 
@@ -169,9 +181,8 @@
             
             <div class="flex gap-6 text-sm text-gray-400">
                 <a href="#" class="hover:text-white">Home</a>
-                <a href="#" class="hover:text-white">Image Generator</a>
-                <a href="#" class="hover:text-white">Video Generator</a>
-                <a href="#" class="hover:text-white">Gallery</a>
+                <a href="#generator" class="hover:text-white">Image Generator</a>
+                <a href="#chat" class="hover:text-white">ORNOB Ai</a>
             </div>
 
             <div class="flex gap-4 text-gray-400">
@@ -186,7 +197,7 @@
         </div>
     </footer>
 
-    <!-- JavaScript for Tabs and Real Image Generation -->
+    <!-- JavaScript for Tabs, Image Generation, and Chat -->
     <script>
         // Tab Switching Logic
         function switchTab(tabName, btnElement) {
@@ -220,17 +231,13 @@
                 return;
             }
 
-            // Show loading state
             container.classList.remove('hidden');
             loading.classList.remove('hidden');
             img.classList.add('hidden');
             btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Generating...';
             btn.disabled = true;
 
-            // Add random seed so every image is unique
             const randomSeed = Math.floor(Math.random() * 999999);
-            
-            // Using the stable Flux model
             const imageUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(prompt)}?width=1024&height=576&seed=${randomSeed}&nologo=true&model=flux`;
 
             img.src = imageUrl;
@@ -249,6 +256,81 @@
                 btn.innerHTML = '<i class="fa-solid fa-wand-magic-sparkles"></i> Try Again';
                 btn.disabled = false;
             };
+        }
+
+        // ORNOB Ai Chat Logic
+        async function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const chatBox = document.getElementById('chatBox');
+            const sendBtn = document.getElementById('sendBtn');
+            const message = input.value.trim();
+
+            if (!message) return;
+
+            // 1. Display user message
+            const userDiv = document.createElement('div');
+            userDiv.className = 'message-user';
+            userDiv.textContent = message;
+            chatBox.appendChild(userDiv);
+            
+            input.value = '';
+            chatBox.scrollTop = chatBox.scrollHeight;
+
+            // 2. Show loading indicator for AI
+            const loadingDiv = document.createElement('div');
+            loadingDiv.className = 'message-ai text-gray-400 animate-pulse';
+            loadingDiv.id = 'ai-loading';
+            loadingDiv.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin mr-2"></i> ORNOB Ai is searching the web...';
+            chatBox.appendChild(loadingDiv);
+            chatBox.scrollTop = chatBox.scrollHeight;
+            
+            sendBtn.disabled = true;
+
+            try {
+                // 3. Call Perplexity Sonar via Puter.js for Web Search
+                const response = await puter.ai.chat(message, { 
+                    model: "perplexity/sonar" 
+                });
+
+                // Remove loading
+                document.getElementById('ai-loading').remove();
+
+                // 4. Display AI response
+                const aiDiv = document.createElement('div');
+                aiDiv.className = 'message-ai';
+                
+                // Handle response object or string
+                let replyText = "";
+                if (typeof response === 'string') {
+                    replyText = response;
+                } else if (response && response.message && response.message.content) {
+                    replyText = response.message.content;
+                } else {
+                    replyText = JSON.stringify(response);
+                }
+
+                // Format line breaks
+                aiDiv.innerHTML = replyText.replace(/\n/g, '<br>');
+                chatBox.appendChild(aiDiv);
+                
+            } catch (error) {
+                console.error(error);
+                document.getElementById('ai-loading').remove();
+                const errorDiv = document.createElement('div');
+                errorDiv.className = 'message-ai text-red-400';
+                errorDiv.textContent = "Sorry, I couldn't connect to the internet right now. Please try again later.";
+                chatBox.appendChild(errorDiv);
+            } finally {
+                sendBtn.disabled = false;
+                chatBox.scrollTop = chatBox.scrollHeight;
+                input.focus();
+            }
+        }
+
+        function handleEnter(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
         }
     </script>
 </body>
